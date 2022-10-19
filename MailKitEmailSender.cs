@@ -48,7 +48,7 @@ namespace GeneralCargoSystem.Utility
             using (var smtp = new SmtpClient())
             {
                 smtp.Connect(Options.Host_Address, Options.Host_Port, Options.Host_SecureSocketOptions);
-                smtp.Authenticate(Options.Host_Username, Options.Host_Password);
+                //smtp.Authenticate(Options.Host_Username, Options.Host_Password);
                 smtp.Send(email);
                 smtp.Disconnect(true);
             }
