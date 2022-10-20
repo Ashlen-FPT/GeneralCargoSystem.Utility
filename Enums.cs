@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace GeneralCargoSystem.Utility
 {
-    public static class Role
+    public static class Enums
     {
         public const string Administrator = "Administrator";
         public const string Supervisor= "Supervisor";
         public const string User= "User";
-        
+        public const bool ActiveUser = true;
+        public const bool InactiveUser = false;
         
     }
 }
