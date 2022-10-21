@@ -13,6 +13,14 @@ namespace GeneralCargoSystem.Utility
         public const string User= "User";
         public const bool ActiveUser = true;
         public const bool InactiveUser = false;
-        
+        public const string Created = "Created";
+        public const string Read = "Read";
+        public const string Updated = "Updated";
+        public const string Deleted = "Deleted";
+        public const string Login = "User Logged In";
+        public const string Logout = "User Logged Out";
+        public const string SentEmail = "Sent Email";
+        public const string NewUser = "New User Created";
+        public const string EmailVerification = "User Verified Email";
     }
 }

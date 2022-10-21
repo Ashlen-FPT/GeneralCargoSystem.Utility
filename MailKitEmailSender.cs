@@ -9,20 +9,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GeneralCargoSystem.Models;
+using GeneralCargoSystem.Data;
 
 namespace GeneralCargoSystem.Utility
 {
     public class MailKitEmailSender : IEmailSender
     {
-        public MailKitEmailSender(IOptions<MailKitEmailSenderOptions> options)
+        private readonly ApplicationDbContext _context;
+        public MailKitEmailSender(IOptions<MailKitEmailSenderOptions> options, ApplicationDbContext context)
         {
             this.Options = options.Value;
+            _context = context;
         }
 
         public MailKitEmailSenderOptions Options { get; set; }
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
+
             return Execute(email, subject, message);
         }
 
@@ -52,6 +56,18 @@ namespace GeneralCargoSystem.Utility
                 smtp.Send(email);
                 smtp.Disconnect(true);
             }
+            var findUsername = _context.ApplicationUsers.Where(a => a.Email == to).FirstOrDefault()?.FirstName;
+
+            var log = new Logs
+            {
+                UserEmail = to,
+                UserName = findUsername,
+                LogType = Enums.SentEmail,
+                AffectedTable = "Users",
+                DateTime = DateTime.Now
+            };
+            _context.Logs.Add(log);
+            _context.SaveChanges();
 
             return Task.FromResult(true);
         }
