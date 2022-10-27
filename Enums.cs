@@ -22,5 +22,7 @@ namespace GeneralCargoSystem.Utility
         public const string SentEmail = "Sent Email";
         public const string NewUser = "New User Created";
         public const string EmailVerification = "User Verified Email";
+        public const string UserPasswordUpdated = "User Updated Password";
+
     }
 }
