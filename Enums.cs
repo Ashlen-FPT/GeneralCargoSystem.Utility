@@ -23,6 +23,7 @@ namespace GeneralCargoSystem.Utility
         public const string NewUser = "New User Created";
         public const string EmailVerification = "User Verified Email";
         public const string UserPasswordUpdated = "User Updated Password";
+        public const string UserUpdatedProfileImage = "User Updated Profile Image";
 
     }
 }
