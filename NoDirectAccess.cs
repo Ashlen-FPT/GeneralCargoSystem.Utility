@@ -18,7 +18,7 @@ namespace GeneralCargoSystem.Utility
 {
     public class NoDirectAccess : ActionFilterAttribute
     {
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void  OnActionExecuting(ActionExecutingContext filterContext)
         {
             var canAccess = false;
 
@@ -29,7 +29,7 @@ namespace GeneralCargoSystem.Utility
             {
                 var rUri = new UriBuilder(referer).Uri;
                 var req = filterContext.HttpContext.Request;
-                if (req.Host.Host == rUri.Host && req.Host.Port == rUri.Port && req.Scheme == rUri.Scheme)
+                if (req.Host.Host == rUri.Host /*&& req.Host.Port == rUri.Port && req.Scheme == rUri.Scheme*/)
                 {
                     canAccess = true;
                 }
