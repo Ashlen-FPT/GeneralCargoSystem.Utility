@@ -56,7 +56,7 @@ namespace GeneralCargoSystem.Utility
                 smtp.Send(email);
                 smtp.Disconnect(true);
             }
-            var findUsername = _context.ApplicationUsers.Where(a => a.Email == to).FirstOrDefault()?.FirstName;
+            var findUsername = _context.ApplicationUsers.Where(a => a.Email == to).FirstOrDefault()!.FirstName;
 
             var log = new Logs
             {
