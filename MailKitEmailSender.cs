@@ -56,12 +56,21 @@ namespace GeneralCargoSystem.Utility
                 smtp.Send(email);
                 smtp.Disconnect(true);
             }
-            var findUsername = _context.ApplicationUsers.Where(a => a.Email == to).FirstOrDefault()!.FirstName;
+            var findUsername = _context.ApplicationUsers.Where(a => a.Email == to).FirstOrDefault()?.FirstName;
+            string username;
+            if (findUsername != null)
+            {
+                username = findUsername;
+            }
+            else
+            {
+                username = "FPT User";
+            }
 
             var log = new Logs
             {
                 UserEmail = to,
-                UserName = findUsername,
+                UserName = username,
                 LogType = Enums.SentEmail,
                 AffectedTable = "Users",
                 DateTime = DateTime.Now
